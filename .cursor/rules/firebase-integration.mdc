@@ -1,0 +1,314 @@
+---
+alwaysApply: true
+---
+
+# Firebase Integration Guidelines
+
+## Setup and Configuration
+
+- Use Firebase v9+ modular SDK
+- Configuration file: [firebase.ts](mdc:src/lib/firebase.ts)
+- Environment variables in `.env.local`
+
+```typescript
+// src/lib/firebase.ts
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
+const firebaseConfig = {
+  // config from environment variables
+};
+
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+```
+
+## Authentication Patterns
+
+- Use Firebase Auth for user management
+- Implement role-based access (student, teacher, admin)
+- Store user profiles in Firestore
+
+### Auth Hook Pattern
+
+```typescript
+// src/hooks/useAuth.ts
+export function useAuth() {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  // Implementation with onAuthStateChanged
+}
+```
+
+### Protected Routes
+
+```typescript
+// src/components/ProtectedRoute.tsx
+export function ProtectedRoute({
+  children,
+  requiredRole,
+}: {
+  children: React.ReactNode;
+  requiredRole?: UserRole;
+}) {
+  // Implementation
+}
+```
+
+## Firestore Data Structure
+
+```
+users/
+  {userId}/
+    - email: string
+    - role: 'student' | 'teacher' | 'admin'
+    - profile: UserProfile
+    - createdAt: timestamp
+
+schools/
+  {schoolId}/
+    - name: string
+    - address: string
+    - settings: SchoolSettings
+
+classes/
+  {classId}/
+    - name: string
+    - schoolId: string
+    - teacherId: string
+    - students: string[]
+    - schedule: ClassSchedule
+
+grades/
+  {gradeId}/
+    - studentId: string
+    - classId: string
+    - assignment: string
+    - score: number
+    - maxScore: number
+    - submittedAt: timestamp
+```
+
+## Firestore Patterns
+
+### Data Fetching
+
+```typescript
+// Use custom hooks for data fetching
+export function useStudents(classId: string) {
+  const [students, setStudents] = useState<Student[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Real-time listener implementation
+}
+```
+
+### CRUD Operations
+
+```typescript
+// src/lib/firestore.ts
+export async function createStudent(studentData: CreateStudentData) {
+  // Implementation with proper error handling
+}
+
+export async function updateGrade(gradeId: string, updates: Partial<Grade>) {
+  // Implementation
+}
+```
+
+## Security Rules
+
+- Implement proper Firestore security rules
+- Role-based access control
+- Data validation in security rules
+
+```javascript
+// firestore.rules
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // User can only access their own profile
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Teachers can manage their classes
+    match /classes/{classId} {
+      allow read, write: if request.auth != null &&
+        resource.data.teacherId == request.auth.uid;
+    }
+  }
+}
+```
+
+## Error Handling
+
+- Implement comprehensive error handling
+- Use try-catch blocks for async operations
+- Provide user-friendly error messages
+- Log errors for debugging
+
+## Performance
+
+- Use Firestore indexes for complex queries
+- Implement pagination for large datasets
+- Use real-time listeners judiciously
+- Cache frequently accessed data
+# Firebase Integration Guidelines
+
+## Setup and Configuration
+
+- Use Firebase v9+ modular SDK
+- Configuration file: [firebase.ts](mdc:src/lib/firebase.ts)
+- Environment variables in `.env.local`
+
+```typescript
+// src/lib/firebase.ts
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
+const firebaseConfig = {
+  // config from environment variables
+};
+
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+```
+
+## Authentication Patterns
+
+- Use Firebase Auth for user management
+- Implement role-based access (student, teacher, admin)
+- Store user profiles in Firestore
+
+### Auth Hook Pattern
+
+```typescript
+// src/hooks/useAuth.ts
+export function useAuth() {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  // Implementation with onAuthStateChanged
+}
+```
+
+### Protected Routes
+
+```typescript
+// src/components/ProtectedRoute.tsx
+export function ProtectedRoute({
+  children,
+  requiredRole,
+}: {
+  children: React.ReactNode;
+  requiredRole?: UserRole;
+}) {
+  // Implementation
+}
+```
+
+## Firestore Data Structure
+
+```
+users/
+  {userId}/
+    - email: string
+    - role: 'student' | 'teacher' | 'admin'
+    - profile: UserProfile
+    - createdAt: timestamp
+
+schools/
+  {schoolId}/
+    - name: string
+    - address: string
+    - settings: SchoolSettings
+
+classes/
+  {classId}/
+    - name: string
+    - schoolId: string
+    - teacherId: string
+    - students: string[]
+    - schedule: ClassSchedule
+
+grades/
+  {gradeId}/
+    - studentId: string
+    - classId: string
+    - assignment: string
+    - score: number
+    - maxScore: number
+    - submittedAt: timestamp
+```
+
+## Firestore Patterns
+
+### Data Fetching
+
+```typescript
+// Use custom hooks for data fetching
+export function useStudents(classId: string) {
+  const [students, setStudents] = useState<Student[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Real-time listener implementation
+}
+```
+
+### CRUD Operations
+
+```typescript
+// src/lib/firestore.ts
+export async function createStudent(studentData: CreateStudentData) {
+  // Implementation with proper error handling
+}
+
+export async function updateGrade(gradeId: string, updates: Partial<Grade>) {
+  // Implementation
+}
+```
+
+## Security Rules
+
+- Implement proper Firestore security rules
+- Role-based access control
+- Data validation in security rules
+
+```javascript
+// firestore.rules
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // User can only access their own profile
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Teachers can manage their classes
+    match /classes/{classId} {
+      allow read, write: if request.auth != null &&
+        resource.data.teacherId == request.auth.uid;
+    }
+  }
+}
+```
+
+## Error Handling
+
+- Implement comprehensive error handling
+- Use try-catch blocks for async operations
+- Provide user-friendly error messages
+- Log errors for debugging
+
+## Performance
+
+- Use Firestore indexes for complex queries
+- Implement pagination for large datasets
+- Use real-time listeners judiciously
+- Cache frequently accessed data

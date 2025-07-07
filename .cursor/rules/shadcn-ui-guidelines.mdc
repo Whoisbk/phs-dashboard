@@ -1,0 +1,164 @@
+---
+alwaysApply: true
+---
+
+# shadcn/ui Guidelines
+
+## Component Installation
+
+- Install components via CLI: `npx shadcn-ui@latest add [component]`
+- Components are stored in `src/components/ui/`
+- Always use the latest versions from shadcn/ui
+
+## Essential Components for Dashboard
+
+```bash
+# Core UI components
+npx shadcn-ui@latest add button
+npx shadcn-ui@latest add input
+npx shadcn-ui@latest add card
+npx shadcn-ui@latest add table
+npx shadcn-ui@latest add dialog
+npx shadcn-ui@latest add form
+npx shadcn-ui@latest add select
+npx shadcn-ui@latest add badge
+npx shadcn-ui@latest add avatar
+npx shadcn-ui@latest add dropdown-menu
+npx shadcn-ui@latest add navigation-menu
+npx shadcn-ui@latest add tabs
+npx shadcn-ui@latest add sheet
+npx shadcn-ui@latest add toast
+npx shadcn-ui@latest add alert
+npx shadcn-ui@latest add progress
+npx shadcn-ui@latest add calendar
+npx shadcn-ui@latest add data-table
+```
+
+## Component Usage Patterns
+
+### Forms
+
+- Always use `react-hook-form` with `zod` validation
+- Use shadcn/ui Form components for consistent styling
+- Implement proper error handling and validation
+
+```typescript
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+```
+
+### Data Display
+
+- Use `Table` component for data lists
+- Use `Card` component for dashboard widgets
+- Use `Badge` for status indicators
+- Use `Avatar` for user profiles
+
+### Navigation
+
+- Use `NavigationMenu` for main navigation
+- Use `Sheet` for mobile sidebar
+- Use `DropdownMenu` for user menus
+
+## Customization
+
+- Modify `src/components/ui/` components as needed
+- Use CSS variables for theming in `globals.css`
+- Follow the design system color palette
+- Maintain accessibility standards (ARIA labels, keyboard navigation)
+
+## Composition Patterns
+
+- Create compound components using shadcn/ui primitives
+- Use slot patterns for flexible component composition
+- Implement proper TypeScript interfaces for props
+
+---
+# shadcn/ui Guidelines
+
+## Component Installation
+
+- Install components via CLI: `npx shadcn-ui@latest add [component]`
+- Components are stored in `src/components/ui/`
+- Always use the latest versions from shadcn/ui
+
+## Essential Components for Dashboard
+
+```bash
+# Core UI components
+npx shadcn-ui@latest add button
+npx shadcn-ui@latest add input
+npx shadcn-ui@latest add card
+npx shadcn-ui@latest add table
+npx shadcn-ui@latest add dialog
+npx shadcn-ui@latest add form
+npx shadcn-ui@latest add select
+npx shadcn-ui@latest add badge
+npx shadcn-ui@latest add avatar
+npx shadcn-ui@latest add dropdown-menu
+npx shadcn-ui@latest add navigation-menu
+npx shadcn-ui@latest add tabs
+npx shadcn-ui@latest add sheet
+npx shadcn-ui@latest add toast
+npx shadcn-ui@latest add alert
+npx shadcn-ui@latest add progress
+npx shadcn-ui@latest add calendar
+npx shadcn-ui@latest add data-table
+```
+
+## Component Usage Patterns
+
+### Forms
+
+- Always use `react-hook-form` with `zod` validation
+- Use shadcn/ui Form components for consistent styling
+- Implement proper error handling and validation
+
+```typescript
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+```
+
+### Data Display
+
+- Use `Table` component for data lists
+- Use `Card` component for dashboard widgets
+- Use `Badge` for status indicators
+- Use `Avatar` for user profiles
+
+### Navigation
+
+- Use `NavigationMenu` for main navigation
+- Use `Sheet` for mobile sidebar
+- Use `DropdownMenu` for user menus
+
+## Customization
+
+- Modify `src/components/ui/` components as needed
+- Use CSS variables for theming in `globals.css`
+- Follow the design system color palette
+- Maintain accessibility standards (ARIA labels, keyboard navigation)
+
+## Composition Patterns
+
+- Create compound components using shadcn/ui primitives
+- Use slot patterns for flexible component composition
+- Implement proper TypeScript interfaces for props
+
+---

@@ -1,0 +1,292 @@
+---
+alwaysApply: true
+---
+
+# Development Workflow
+
+## Git Workflow
+
+- Use feature branches: `feature/student-management`
+- Conventional commits: `feat:`, `fix:`, `docs:`, `style:`, `refactor:`
+- Pull request reviews required
+- Squash and merge strategy
+
+## Code Quality
+
+- ESLint configuration with strict rules
+- Prettier for code formatting
+- Husky for pre-commit hooks
+- TypeScript strict mode enabled
+
+### ESLint Rules
+
+```json
+{
+  "extends": [
+    "next/core-web-vitals",
+    "@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "prefer-const": "error",
+    "no-console": "warn"
+  }
+}
+```
+
+## Testing Strategy
+
+- Unit tests with Jest and React Testing Library
+- Integration tests for critical flows
+- E2E tests with Playwright
+- Test coverage minimum 80%
+
+### Testing Patterns
+
+```typescript
+// Component testing
+import { render, screen } from "@testing-library/react";
+import { StudentCard } from "./StudentCard";
+
+test("displays student information correctly", () => {
+  const student = mockStudent();
+  render(<StudentCard student={student} />);
+
+  expect(screen.getByText(student.firstName)).toBeInTheDocument();
+});
+
+// Hook testing
+import { renderHook } from "@testing-library/react";
+import { useStudents } from "./useStudents";
+
+test("fetches students correctly", async () => {
+  const { result } = renderHook(() => useStudents("class-1"));
+
+  await waitFor(() => {
+    expect(result.current.students).toHaveLength(3);
+  });
+});
+```
+
+## Environment Setup
+
+- Development: `npm run dev`
+- Production build: `npm run build`
+- Testing: `npm run test`
+- Linting: `npm run lint`
+
+### Environment Variables
+
+```bash
+# .env.local
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+
+# Development
+NEXT_PUBLIC_APP_ENV=development
+
+# Production
+NEXT_PUBLIC_APP_ENV=production
+```
+
+## Documentation
+
+- README with setup instructions
+- Component documentation with Storybook
+- API documentation
+- Deployment guide
+
+## Performance Monitoring
+
+- Core Web Vitals tracking
+- Error monitoring with Sentry
+- Analytics with Google Analytics
+- Performance budgets
+
+## Security Practices
+
+- Environment variable validation
+- Input sanitization
+- CSRF protection
+- Rate limiting for API routes
+- Security headers configuration
+
+## Deployment
+
+- Vercel for hosting
+- Automatic deployments from main branch
+- Preview deployments for pull requests
+- Environment-specific configurations
+
+## Code Organization
+
+- Feature-based folder structure
+- Barrel exports for clean imports
+- Consistent naming conventions
+- Separation of concerns
+
+## Dependencies Management
+
+- Regular dependency updates
+- Security vulnerability scanning
+- Bundle size monitoring
+- Peer dependency management
+
+## Debugging
+
+- React Developer Tools
+- Redux DevTools (if using Redux)
+- Network tab for API debugging
+- Console logging best practices
+
+---
+# Development Workflow
+
+## Git Workflow
+
+- Use feature branches: `feature/student-management`
+- Conventional commits: `feat:`, `fix:`, `docs:`, `style:`, `refactor:`
+- Pull request reviews required
+- Squash and merge strategy
+
+## Code Quality
+
+- ESLint configuration with strict rules
+- Prettier for code formatting
+- Husky for pre-commit hooks
+- TypeScript strict mode enabled
+
+### ESLint Rules
+
+```json
+{
+  "extends": [
+    "next/core-web-vitals",
+    "@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "prefer-const": "error",
+    "no-console": "warn"
+  }
+}
+```
+
+## Testing Strategy
+
+- Unit tests with Jest and React Testing Library
+- Integration tests for critical flows
+- E2E tests with Playwright
+- Test coverage minimum 80%
+
+### Testing Patterns
+
+```typescript
+// Component testing
+import { render, screen } from "@testing-library/react";
+import { StudentCard } from "./StudentCard";
+
+test("displays student information correctly", () => {
+  const student = mockStudent();
+  render(<StudentCard student={student} />);
+
+  expect(screen.getByText(student.firstName)).toBeInTheDocument();
+});
+
+// Hook testing
+import { renderHook } from "@testing-library/react";
+import { useStudents } from "./useStudents";
+
+test("fetches students correctly", async () => {
+  const { result } = renderHook(() => useStudents("class-1"));
+
+  await waitFor(() => {
+    expect(result.current.students).toHaveLength(3);
+  });
+});
+```
+
+## Environment Setup
+
+- Development: `npm run dev`
+- Production build: `npm run build`
+- Testing: `npm run test`
+- Linting: `npm run lint`
+
+### Environment Variables
+
+```bash
+# .env.local
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+
+# Development
+NEXT_PUBLIC_APP_ENV=development
+
+# Production
+NEXT_PUBLIC_APP_ENV=production
+```
+
+## Documentation
+
+- README with setup instructions
+- Component documentation with Storybook
+- API documentation
+- Deployment guide
+
+## Performance Monitoring
+
+- Core Web Vitals tracking
+- Error monitoring with Sentry
+- Analytics with Google Analytics
+- Performance budgets
+
+## Security Practices
+
+- Environment variable validation
+- Input sanitization
+- CSRF protection
+- Rate limiting for API routes
+- Security headers configuration
+
+## Deployment
+
+- Vercel for hosting
+- Automatic deployments from main branch
+- Preview deployments for pull requests
+- Environment-specific configurations
+
+## Code Organization
+
+- Feature-based folder structure
+- Barrel exports for clean imports
+- Consistent naming conventions
+- Separation of concerns
+
+## Dependencies Management
+
+- Regular dependency updates
+- Security vulnerability scanning
+- Bundle size monitoring
+- Peer dependency management
+
+## Debugging
+
+- React Developer Tools
+- Redux DevTools (if using Redux)
+- Network tab for API debugging
+- Console logging best practices
+
+---

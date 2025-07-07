@@ -1,0 +1,310 @@
+---
+alwaysApply: true
+---
+
+# Dashboard Features Guidelines
+
+## Core Dashboard Features
+
+### Student Management
+
+- Student registration and profile management
+- Bulk student import via CSV
+- Student search and filtering
+- Academic history tracking
+- Parent contact management
+
+### Teacher Management
+
+- Teacher profiles and credentials
+- Subject and class assignments
+- Schedule management
+- Performance analytics
+
+### Class Management
+
+- Class creation and scheduling
+- Student enrollment
+- Attendance tracking
+- Assignment management
+- Grade book integration
+
+### Grade Management
+
+- Grade entry and calculation
+- Report card generation
+- Progress tracking
+- Parent notifications
+- Academic analytics
+
+## Component Architecture
+
+### Dashboard Layout
+
+```typescript
+// src/components/layout/DashboardLayout.tsx
+export function DashboardLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <DashboardHeader />
+      <div className="flex">
+        <DashboardSidebar />
+        <main className="flex-1 p-6">{children}</main>
+      </div>
+    </div>
+  );
+}
+```
+
+### Data Tables
+
+- Use shadcn/ui Table component
+- Implement sorting, filtering, and pagination
+- Add bulk actions for management tasks
+- Include export functionality
+
+```typescript
+// src/components/dashboard/StudentTable.tsx
+interface StudentTableProps {
+  students: Student[];
+  onEdit: (student: Student) => void;
+  onDelete: (studentId: string) => void;
+  onBulkAction: (action: string, studentIds: string[]) => void;
+}
+```
+
+### Forms
+
+- Use react-hook-form with zod validation
+- Implement multi-step forms for complex data entry
+- Add auto-save functionality
+- Include file upload capabilities
+
+### Charts and Analytics
+
+- Use recharts or chart.js for data visualization
+- Student performance trends
+- Class attendance rates
+- Grade distribution charts
+- School-wide analytics
+
+## State Management
+
+- Use React Query for server state
+- Use Zustand for client state
+- Implement optimistic updates
+- Cache frequently accessed data
+
+```typescript
+// src/store/dashboardStore.ts
+interface DashboardStore {
+  selectedClass: Class | null;
+  setSelectedClass: (classData: Class | null) => void;
+  filters: FilterState;
+  setFilters: (filters: Partial<FilterState>) => void;
+}
+```
+
+## Real-time Features
+
+- Live grade updates
+- Real-time notifications
+- Online status indicators
+- Collaborative features
+
+## Search and Filtering
+
+- Global search across all entities
+- Advanced filtering options
+- Saved search preferences
+- Quick filters for common queries
+
+## Notifications System
+
+- In-app notifications
+- Email notifications for important events
+- Push notifications (future enhancement)
+- Notification preferences management
+
+## Export and Reporting
+
+- PDF report generation
+- CSV data export
+- Custom report builder
+- Scheduled reports
+
+## Mobile Responsiveness
+
+- Responsive design for all screen sizes
+- Touch-friendly interactions
+- Mobile-specific navigation patterns
+- Progressive Web App features
+
+## Accessibility
+
+- WCAG 2.1 AA compliance
+- Keyboard navigation support
+- Screen reader compatibility
+- High contrast mode support
+- Focus management
+
+## Performance Optimization
+
+- Code splitting by route
+- Lazy loading for large components
+- Image optimization
+- Bundle size monitoring
+- Performance metrics tracking
+# Dashboard Features Guidelines
+
+## Core Dashboard Features
+
+### Student Management
+
+- Student registration and profile management
+- Bulk student import via CSV
+- Student search and filtering
+- Academic history tracking
+- Parent contact management
+
+### Teacher Management
+
+- Teacher profiles and credentials
+- Subject and class assignments
+- Schedule management
+- Performance analytics
+
+### Class Management
+
+- Class creation and scheduling
+- Student enrollment
+- Attendance tracking
+- Assignment management
+- Grade book integration
+
+### Grade Management
+
+- Grade entry and calculation
+- Report card generation
+- Progress tracking
+- Parent notifications
+- Academic analytics
+
+## Component Architecture
+
+### Dashboard Layout
+
+```typescript
+// src/components/layout/DashboardLayout.tsx
+export function DashboardLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <DashboardHeader />
+      <div className="flex">
+        <DashboardSidebar />
+        <main className="flex-1 p-6">{children}</main>
+      </div>
+    </div>
+  );
+}
+```
+
+### Data Tables
+
+- Use shadcn/ui Table component
+- Implement sorting, filtering, and pagination
+- Add bulk actions for management tasks
+- Include export functionality
+
+```typescript
+// src/components/dashboard/StudentTable.tsx
+interface StudentTableProps {
+  students: Student[];
+  onEdit: (student: Student) => void;
+  onDelete: (studentId: string) => void;
+  onBulkAction: (action: string, studentIds: string[]) => void;
+}
+```
+
+### Forms
+
+- Use react-hook-form with zod validation
+- Implement multi-step forms for complex data entry
+- Add auto-save functionality
+- Include file upload capabilities
+
+### Charts and Analytics
+
+- Use recharts or chart.js for data visualization
+- Student performance trends
+- Class attendance rates
+- Grade distribution charts
+- School-wide analytics
+
+## State Management
+
+- Use React Query for server state
+- Use Zustand for client state
+- Implement optimistic updates
+- Cache frequently accessed data
+
+```typescript
+// src/store/dashboardStore.ts
+interface DashboardStore {
+  selectedClass: Class | null;
+  setSelectedClass: (classData: Class | null) => void;
+  filters: FilterState;
+  setFilters: (filters: Partial<FilterState>) => void;
+}
+```
+
+## Real-time Features
+
+- Live grade updates
+- Real-time notifications
+- Online status indicators
+- Collaborative features
+
+## Search and Filtering
+
+- Global search across all entities
+- Advanced filtering options
+- Saved search preferences
+- Quick filters for common queries
+
+## Notifications System
+
+- In-app notifications
+- Email notifications for important events
+- Push notifications (future enhancement)
+- Notification preferences management
+
+## Export and Reporting
+
+- PDF report generation
+- CSV data export
+- Custom report builder
+- Scheduled reports
+
+## Mobile Responsiveness
+
+- Responsive design for all screen sizes
+- Touch-friendly interactions
+- Mobile-specific navigation patterns
+- Progressive Web App features
+
+## Accessibility
+
+- WCAG 2.1 AA compliance
+- Keyboard navigation support
+- Screen reader compatibility
+- High contrast mode support
+- Focus management
+
+## Performance Optimization
+
+- Code splitting by route
+- Lazy loading for large components
+- Image optimization
+- Bundle size monitoring
+- Performance metrics tracking

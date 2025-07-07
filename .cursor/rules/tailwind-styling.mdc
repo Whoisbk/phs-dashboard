@@ -1,0 +1,184 @@
+---
+alwaysApply: true
+---
+
+# Tailwind CSS Guidelines
+
+## Class Organization
+
+- Order classes logically: layout → spacing → typography → colors → effects
+- Use `clsx` or `cn` utility for conditional classes
+- Group related classes together
+
+```typescript
+import { cn } from "@/lib/utils"
+
+className={cn(
+  "flex items-center justify-between", // layout
+  "px-4 py-2 mb-4", // spacing
+  "text-sm font-medium", // typography
+  "bg-white border border-gray-200", // colors/borders
+  "rounded-lg shadow-sm", // effects
+  isActive && "bg-blue-50 border-blue-200", // conditional
+)}
+```
+
+## Design System
+
+### Colors
+
+- Primary: `blue-600` (main brand color)
+- Secondary: `gray-600`
+- Success: `green-600`
+- Warning: `yellow-600`
+- Error: `red-600`
+- Background: `gray-50` (page background)
+- Card background: `white`
+
+### Spacing Scale
+
+- Use consistent spacing: `2, 4, 6, 8, 12, 16, 20, 24`
+- Container max-width: `max-w-7xl`
+- Section padding: `px-4 sm:px-6 lg:px-8`
+
+### Typography
+
+- Headings: `font-semibold` or `font-bold`
+- Body text: `text-gray-700`
+- Muted text: `text-gray-500`
+- Small text: `text-sm text-gray-600`
+
+## Responsive Design
+
+- Mobile-first approach
+- Breakpoints: `sm:`, `md:`, `lg:`, `xl:`, `2xl:`
+- Hide/show elements: `hidden lg:block`
+- Responsive spacing: `p-4 lg:p-8`
+
+## Component Patterns
+
+### Dashboard Cards
+
+```typescript
+className = "bg-white rounded-lg border border-gray-200 p-6 shadow-sm";
+```
+
+### Buttons (extending shadcn/ui)
+
+```typescript
+// Primary button
+className = "bg-blue-600 hover:bg-blue-700 text-white";
+
+// Secondary button
+className = "border border-gray-300 bg-white hover:bg-gray-50";
+```
+
+### Tables
+
+```typescript
+className = "min-w-full divide-y divide-gray-200";
+```
+
+## Performance
+
+- Use JIT compilation (enabled by default)
+- Purge unused classes in production
+- Avoid arbitrary values when possible
+- Use design tokens consistently
+
+## Dark Mode (Future)
+
+- Prepare for dark mode with `dark:` variants
+- Use semantic color names in custom CSS variables
+
+---
+# Tailwind CSS Guidelines
+
+## Class Organization
+
+- Order classes logically: layout → spacing → typography → colors → effects
+- Use `clsx` or `cn` utility for conditional classes
+- Group related classes together
+
+```typescript
+import { cn } from "@/lib/utils"
+
+className={cn(
+  "flex items-center justify-between", // layout
+  "px-4 py-2 mb-4", // spacing
+  "text-sm font-medium", // typography
+  "bg-white border border-gray-200", // colors/borders
+  "rounded-lg shadow-sm", // effects
+  isActive && "bg-blue-50 border-blue-200", // conditional
+)}
+```
+
+## Design System
+
+### Colors
+
+- Primary: `blue-600` (main brand color)
+- Secondary: `gray-600`
+- Success: `green-600`
+- Warning: `yellow-600`
+- Error: `red-600`
+- Background: `gray-50` (page background)
+- Card background: `white`
+
+### Spacing Scale
+
+- Use consistent spacing: `2, 4, 6, 8, 12, 16, 20, 24`
+- Container max-width: `max-w-7xl`
+- Section padding: `px-4 sm:px-6 lg:px-8`
+
+### Typography
+
+- Headings: `font-semibold` or `font-bold`
+- Body text: `text-gray-700`
+- Muted text: `text-gray-500`
+- Small text: `text-sm text-gray-600`
+
+## Responsive Design
+
+- Mobile-first approach
+- Breakpoints: `sm:`, `md:`, `lg:`, `xl:`, `2xl:`
+- Hide/show elements: `hidden lg:block`
+- Responsive spacing: `p-4 lg:p-8`
+
+## Component Patterns
+
+### Dashboard Cards
+
+```typescript
+className = "bg-white rounded-lg border border-gray-200 p-6 shadow-sm";
+```
+
+### Buttons (extending shadcn/ui)
+
+```typescript
+// Primary button
+className = "bg-blue-600 hover:bg-blue-700 text-white";
+
+// Secondary button
+className = "border border-gray-300 bg-white hover:bg-gray-50";
+```
+
+### Tables
+
+```typescript
+className = "min-w-full divide-y divide-gray-200";
+```
+
+## Performance
+
+- Use JIT compilation (enabled by default)
+- Purge unused classes in production
+- Avoid arbitrary values when possible
+- Use design tokens consistently
+
+## Dark Mode (Future)
+
+- Prepare for dark mode with `dark:` variants
+- Use semantic color names in custom CSS variables
+
+---

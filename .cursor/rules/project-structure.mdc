@@ -1,0 +1,102 @@
+---
+alwaysApply: true
+---
+
+# High School Dashboard - Project Structure
+
+This is a Next.js 15 high school dashboard using the **app directory** structure with shadcn/ui, Tailwind CSS, and Firebase.
+
+## Core Structure
+
+- Use Next.js 15 app directory structure (`src/app/`)
+- Main entry point: [layout.tsx](mdc:src/app/layout.tsx)
+- Home page: [page.tsx](mdc:src/app/page.tsx)
+- Global styles: [globals.css](mdc:src/app/globals.css)
+
+## Directory Organization
+
+```
+src/
+├── app/                    # Next.js 15 app directory
+│   ├── (auth)/            # Route groups for auth pages
+│   ├── dashboard/         # Main dashboard routes
+│   ├── students/          # Student management
+│   ├── teachers/          # Teacher management
+│   ├── classes/           # Class management
+│   ├── grades/            # Grade management
+│   └── settings/          # Settings pages
+├── components/            # Reusable UI components
+│   ├── ui/               # shadcn/ui components
+│   ├── dashboard/        # Dashboard-specific components
+│   ├── forms/            # Form components
+│   └── layout/           # Layout components
+├── lib/                  # Utility functions and configurations
+│   ├── firebase.ts       # Firebase configuration
+│   ├── auth.ts          # Authentication utilities
+│   ├── utils.ts         # General utilities
+│   └── validations.ts   # Form validation schemas
+├── hooks/               # Custom React hooks
+├── types/               # TypeScript type definitions
+└── constants/           # App constants and configurations
+```
+
+## Route Structure
+
+- `/` - Landing/login page
+- `/dashboard` - Main dashboard
+- `/dashboard/students` - Student management
+- `/dashboard/teachers` - Teacher management
+- `/dashboard/classes` - Class management
+- `/dashboard/grades` - Grade management
+- `/dashboard/settings` - Settings
+
+---
+# High School Dashboard - Project Structure
+
+This is a Next.js 15 high school dashboard using the **app directory** structure with shadcn/ui, Tailwind CSS, and Firebase.
+
+## Core Structure
+
+- Use Next.js 15 app directory structure (`src/app/`)
+- Main entry point: [layout.tsx](mdc:src/app/layout.tsx)
+- Home page: [page.tsx](mdc:src/app/page.tsx)
+- Global styles: [globals.css](mdc:src/app/globals.css)
+
+## Directory Organization
+
+```
+src/
+├── app/                    # Next.js 15 app directory
+│   ├── (auth)/            # Route groups for auth pages
+│   ├── dashboard/         # Main dashboard routes
+│   ├── students/          # Student management
+│   ├── teachers/          # Teacher management
+│   ├── classes/           # Class management
+│   ├── grades/            # Grade management
+│   └── settings/          # Settings pages
+├── components/            # Reusable UI components
+│   ├── ui/               # shadcn/ui components
+│   ├── dashboard/        # Dashboard-specific components
+│   ├── forms/            # Form components
+│   └── layout/           # Layout components
+├── lib/                  # Utility functions and configurations
+│   ├── firebase.ts       # Firebase configuration
+│   ├── auth.ts          # Authentication utilities
+│   ├── utils.ts         # General utilities
+│   └── validations.ts   # Form validation schemas
+├── hooks/               # Custom React hooks
+├── types/               # TypeScript type definitions
+└── constants/           # App constants and configurations
+```
+
+## Route Structure
+
+- `/` - Landing/login page
+- `/dashboard` - Main dashboard
+- `/dashboard/students` - Student management
+- `/dashboard/teachers` - Teacher management
+- `/dashboard/classes` - Class management
+- `/dashboard/grades` - Grade management
+- `/dashboard/settings` - Settings
+
+---
